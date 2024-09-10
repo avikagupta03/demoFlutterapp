@@ -1,21 +1,22 @@
+import 'package:f/Hindi_menu.dart';
 import 'package:flutter/material.dart';
 import 'menu.dart'; // Import the MenuDrawer
 
-class Chat extends StatefulWidget {
-  const Chat({super.key});
+class ChatHindi extends StatefulWidget {
+  const ChatHindi({super.key});
 
   @override
-  State<Chat> createState() => _ChatState();
+  State<ChatHindi> createState() => _ChatHindiState();
 }
 
-class _ChatState extends State<Chat> {
+class _ChatHindiState extends State<ChatHindi> {
   final List<String> messages = [
-    "I am Healo, your personal AI coach for emotional well-being. ✨✨\n\nThis is a safe and confidential space for anything you want to share, and I will try to help you in every way I can to nurture your emotional health.",
-    "Hi there!",
-    "How are you?",
-    "I'm good, thanks!",
-    "What about you?",
-    "I'm great, thank you!",
+    "मैं हीलो हूँ, आपकी भावनात्मक भलाई के लिए आपका व्यक्तिगत एआई कोच। ✨✨\n\nयह आपकी किसी भी बात को साझा करने के लिए एक सुरक्षित और गोपनीय स्थान है, और मैं आपकी भावनात्मक सेहत को पोषित करने के लिए हर संभव प्रयास करूंगा।",
+    "नमस्ते!",
+    "आप कैसे हैं?",
+    "मैं अच्छा हूँ, धन्यवाद!",
+    "और आप?",
+    "मैं भी बढ़िया हूँ, धन्यवाद!",
   ];
 
   final TextEditingController _messageController = TextEditingController();
@@ -35,7 +36,14 @@ class _ChatState extends State<Chat> {
       appBar: AppBar(
         backgroundColor: Color(0xFF4A148C), // Dark Purple
         iconTheme: IconThemeData(color: Colors.white),
-        title: Text('Chat', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        title: Text(
+          'चैट',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'MANGAL', // Use Mangal font
+          ),
+        ),
         centerTitle: true,
         leading: Builder(
           builder: (context) => IconButton(
@@ -60,7 +68,7 @@ class _ChatState extends State<Chat> {
           ),
         ],
       ),
-      drawer: MenuDrawer(),
+      drawer: MenuDrawerHindi(),
       backgroundColor: Color(0xFF1A003B), // Darker Purple
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -75,11 +83,12 @@ class _ChatState extends State<Chat> {
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 color: Color(0xFF6A1B9A), // Dark Purple
                 child: Text(
-                  "Hi! Healo is here to help ✨",
+                  "नमस्ते! हीलो यहाँ मदद के लिए है ✨",
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Mangal', // Use Mangal font
                     color: Colors.white,
                     letterSpacing: 1.5,
                     height: 1.5,
@@ -88,16 +97,6 @@ class _ChatState extends State<Chat> {
               ),
             ),
             SizedBox(height: 10),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: Image.network(
-                "https://img.freepik.com/free-vector/cute-dog-doctor-with-stethoscope-cartoon-vector-icon-illustration-animal-healthcare-icon-isolated_138676-5182.jpg?t=st=1725527580~exp=1725531180~hmac=eece240973a1788f488a3311bfa8507e389847ec9698bda5c672f18d985ce698&w=740",
-                height: 100,
-                fit: BoxFit.contain,
-              ),
-            ),
             Expanded(
               child: ListView.builder(
                 padding: EdgeInsets.all(8.0),
@@ -130,6 +129,7 @@ class _ChatState extends State<Chat> {
                         messages[index],
                         style: TextStyle(
                           fontSize: 16,
+                          fontFamily: 'Mangal', // Use Mangal font
                           color: index % 2 == 0 ? Colors.black : Colors.white,
                         ),
                       ),
@@ -146,8 +146,8 @@ class _ChatState extends State<Chat> {
                     child: TextField(
                       controller: _messageController,
                       decoration: InputDecoration(
-                        hintText: "Enter your message",
-                        hintStyle: TextStyle(color: Colors.white54),
+                        hintText: "अपना संदेश दर्ज करें",
+                        hintStyle: TextStyle(color: Colors.white54, fontFamily: 'Mangal'), // Use Mangal font
                         filled: true,
                         fillColor: Color(0xFFAB47BC), // Lighter Purple
                         border: OutlineInputBorder(
@@ -156,7 +156,7 @@ class _ChatState extends State<Chat> {
                         ),
                         contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       ),
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.black, fontFamily: 'Mangal'), // Use Mangal font
                     ),
                   ),
                   SizedBox(width: 8),

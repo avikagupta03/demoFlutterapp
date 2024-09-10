@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'chat.dart'; // Import the Chat screen
 
 class Loading extends StatefulWidget {
   const Loading({super.key});
@@ -12,10 +11,46 @@ class _LoadingState extends State<Loading> {
   @override
   void initState() {
     super.initState();
-    // Navigate to the Chat screen after a delay
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/chat');
-    });
+    // Start the loading process and then show the language selection dialog
+    _startLoadingProcess();
+  }
+
+  void _startLoadingProcess() async {
+    // Simulate a loading process with a delay
+    await Future.delayed(Duration(seconds: 3));
+    _showLanguageSelectionDialog();
+  }
+
+  void _showLanguageSelectionDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Choose Language Medium'),
+          content: Text('Please select your preferred language to proceed.'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('English'),
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+                Navigator.pushReplacementNamed(context, '/chat'); // Navigate to Chat in English
+              },
+            ),
+            TextButton(
+              child: Text('Hindi'),
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+                Navigator.pushReplacementNamed(context, '/chat_hindi'); // Navigate to Hindi Chat screen
+              },
+            ),
+          ],
+          backgroundColor: Colors.purple[50], // Light purple background color
+          titleTextStyle: TextStyle(color: Colors.black), // Black title text
+          contentTextStyle: TextStyle(color: Colors.black), // Black content text
+        );
+      },
+    );
   }
 
   @override
